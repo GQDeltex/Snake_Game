@@ -45,21 +45,21 @@ answer = raw_input("")
 if answer == 'y' or answer == 'Y':
     try:
         print "Unzipping"
-        unzip('Snake_Game_Windows_v0.3.zip', 'Snake_Game_v0.3\\')
+        unzip('Snake_Game_Windows.zip', 'Snake_Game\\')
     except:
         print "ERROR!!  Unzipping Failed"
         error = True
     time.sleep(1)
     try:
         print "Copying"
-        copy('Snake_Game_v0.3', install_location)
+        copy('Snake_Game', install_location)
     except:
         print "ERROR!! Copying Failed"
         error = True
     time.sleep(1)
     try:
         print "Deleting unused Files"
-        shutil.rmtree('Snake_Game_v0.3')
+        shutil.rmtree('Snake_Game')
     except:
         print "ERROR!!  Deleting Files Failed"
         error = True

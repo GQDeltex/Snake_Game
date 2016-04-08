@@ -15,25 +15,28 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 yellow = (0, 255, 255)
-snake_Head_image = pygame.image.load(os.path.join('Content\\Sprites', 'SnakeHead.png'))
-snake_Body_image = pygame.image.load(os.path.join('Content\\Sprites', 'SnakeBody.png'))
-apple_image = pygame.image.load(os.path.join('Content\\Sprites', 'Apple.png'))
-icon_image = pygame.image.load(os.path.join('Content\\Sprites', 'Icon.png'))
+snake_Head_image = pygame.image.load(os.path.join('Content/Sprites', 'SnakeHead.png'))
+snake_Body_image = pygame.image.load(os.path.join('Content/Sprites', 'SnakeBody.png'))
+apple_image = pygame.image.load(os.path.join('Content/Sprites', 'Apple.png'))
+icon_image = pygame.image.load(os.path.join('Content/Sprites', 'Icon.png'))
 
 #Music:
-bg_music = pygame.mixer.music.load(os.path.join('Content\\Music', 'bitjam_159.ogg'))
+bg_music = pygame.mixer.music.load(os.path.join('Content/Music', 'bitjam_159.ogg'))
 pygame.mixer.music.play(-1, 0.0)
 pygame.mixer.music.set_volume(0.5)
 
 #Sounds:
-eat_sound = pygame.mixer.Sound(os.path.join('Content\\Sounds', 'Eating_Sound.wav'))
+eat_sound = pygame.mixer.Sound(os.path.join('Content/Sounds', 'Eating_Sound.wav'))
 eat_sound.set_volume(1.0)
 
 #Variables:
 block_size = 10
 clock = pygame.time.Clock()
 direction = "right"
-default_font = "Comic Sans MS"
+if os.name == 'nt':
+    default_font = "Comic Sans MS"
+else:
+    default_font = "Ubuntu"
 smallfont = pygame.font.SysFont(default_font, 25)
 mediumfont = pygame.font.SysFont(default_font, 40)
 bigfont = pygame.font.SysFont(default_font, 55)
