@@ -4,10 +4,10 @@ import zipfile
 import os
 import time
 
-install_location_ = 'C:\\Program Files (x86)\\PeteStudioGames\\Snake_Game\\'
-install_location = 'C:\\PeteStudioGames\\Snake_Game\\'
-dir_location_ = 'C:\\Program Files (x86)\\PeteStudioGames'
-dir_location = 'C:\\PeteStudioGames'
+#install_location_ = 'C:/Program Files (x86)/PeteStudioGames/Snake_Game/'
+install_location = 'C:/PeteStudioGames/Snake_Game/'
+#dir_location_ = 'C:/Program Files (x86)/PeteStudioGames'
+dir_location = 'C:/PeteStudioGames'
 error = False
  
 def createShortcut(path, target='', wDir='', icon=''):    
@@ -45,7 +45,7 @@ answer = raw_input("")
 if answer == 'y' or answer == 'Y':
     try:
         print "Unzipping"
-        unzip('Snake_Game_Windows.zip', 'Snake_Game\\')
+        unzip('Snake_Game_Windows.zip', 'Snake_Game/')
     except:
         print "ERROR!!  Unzipping Failed"
         error = True
@@ -66,9 +66,17 @@ if answer == 'y' or answer == 'Y':
     time.sleep(1)
     try:
         print "Creating Shortcut"
-        createShortcut(path = os.path.join(os.path.expanduser('~'), 'Desktop\\Snake_game.lnk'), target = os.path.join(install_location, 'game.exe'), wDir = install_location)
+        createShortcut(path = os.path.join(os.path.expanduser('~'), 'Desktop/Snake_game.lnk'), target = os.path.join(install_location, 'game.exe'), wDir = install_location)
     except:
         print "ERROR!!  Creating Shortcut Failed"
+        error = True
+    try:
+        print "Resetting Highscore"
+        highscore_file = open(os.path.join(install_location, 'Content/score.txt'), 'w')
+        highscore_file.write("0")
+        highscore_file.close()
+    except:
+        print "ERROR!! couldn't reset Highscore!"
         error = True
     if error == True:
         print "Finished, but Errors occured, try again later."
@@ -85,7 +93,7 @@ elif answer == 'n' or answer == 'N':
         print "ERROR!!  Failed to delete the Snake Game at: ", install_location
         error = True
     try:
-        os.remove(os.path.join(os.path.expanduser('~'), 'Desktop\\Snake_game.lnk'))
+        os.remove(os.path.join(os.path.expanduser('~'), 'Desktop/Snake_game.lnk'))
     except:
         print "ERROR!!  Failed to delete shortcut!"
         error = True
